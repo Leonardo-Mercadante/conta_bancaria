@@ -17,15 +17,16 @@ LIMITE_SAQUES = 3
 while True:
     opcao = input(f"Escolha uma das opções: {menu}")
 
-#Criando o método de depósito
-
+    # Criando o método de depósito
     if opcao == "1":
         valor_deposito = float(input("Qual é o valor que deseja depositar? R$ "))
-        saldo += valor_deposito
-        extrato.append(f"Depósito de R$ {valor_deposito:.2f}")
+        if valor_deposito > 0:
+            saldo += valor_deposito
+            extrato.append(f"Depósito de R$ {valor_deposito:.2f}")
+        else:
+            print("Insira valores positivos para o depósito")
 
-#Criando o método de Saque
-
+    # Criando o método de Saque
     elif opcao == "2":
         if numero_saques < LIMITE_SAQUES:
             valor_saque = float(input("Qual é o valor que deseja sacar? R$ "))
@@ -38,8 +39,7 @@ while True:
         else:
             print("Limite de saques atingido.")
 
-#Criando o método de Extrato:
-
+    # Criando o método de Extrato
     elif opcao == "3":
         print("\nExtrato:")
         for transacao in extrato:
